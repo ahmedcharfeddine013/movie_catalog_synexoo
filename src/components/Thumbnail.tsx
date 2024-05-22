@@ -1,11 +1,13 @@
 import { Movie } from "@/types";
 import Image from "next/image";
 import React from "react";
+import { Card, CardContent } from "./ui/card";
+import { truncateString } from "@/lib/formatters";
 
 export default function Thumbnail({ movie }: { movie: Movie }) {
   return (
-    <div
-      className="relative h-28 min-w-[180px] cursor-pointer transition duration-100 ease-out md:h-36 md:min-w-[260px] md:hover:scale-105"
+    <Card
+      className="relative group h-48 min-w-[240px] cursor-pointer transition duration-100 ease-out  md:min-w-[300px] md:hover:scale-105"
       onClick={() => {}}
     >
       <Image
@@ -14,8 +16,19 @@ export default function Thumbnail({ movie }: { movie: Movie }) {
         }`}
         className="rounded-sm object-cover md:rounded"
         layout="fill"
+        objectFit="conver"
         alt=""
       />
-    </div>
+      <CardContent className="absolute -bottom-20 transition-all duration-100 ease-in group-hover:bottom-0 bg-black/70 w-full h-[40%] ">
+        <div>
+          <h2 className="flex items-start font-bold mt-3">
+            {truncateString(movie.name) || truncateString(movie.title)}
+          </h2>
+          <p className="text-sm text-gray-200">
+            {movie.vote_average.toFixed()}/10 rating
+          </p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

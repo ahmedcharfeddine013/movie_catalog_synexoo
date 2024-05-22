@@ -6,7 +6,14 @@ import { Movie } from "@/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Row from "../../components/Row";
-import { fetchTrendingNow } from "@/lib/actions/movies/fetchMovies";
+import {
+  fetchActionMovies,
+  fetchComedyMovies,
+  fetchDocumantaries,
+  fetchRomanceMovies,
+  fetchTopRated,
+  fetchTrendingNow,
+} from "@/lib/actions/movies/fetchMovies";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -20,18 +27,15 @@ interface Props {
 }
 
 export default function Home() {
-  const [movies, setMovies] = useState<Movie[]>();
-  const [movie, setMovie] = useState<Movie>();
-
-  useEffect(() => {
-    fetchTrendingNow().then((movies) => setMovies(movies));
-  });
-  if (!movies) return <Loading />;
   return (
     <main className="h-[200vh]">
-      <section>
-        {/* <Banner /> */}
-        <Row title="idk" movies={movies} />
+      <section className="md:space-y-24">
+        <Row title="Trending Now" fetcher={fetchTrendingNow} />
+        <Row title="Top Rated" fetcher={fetchTopRated} />
+        <Row title="Action Thrillers" fetcher={fetchActionMovies} />
+        <Row title="Comedy" fetcher={fetchComedyMovies} />
+        <Row title="Romance" fetcher={fetchRomanceMovies} />
+        <Row title="Documantaries" fetcher={fetchDocumantaries} />
       </section>
     </main>
   );

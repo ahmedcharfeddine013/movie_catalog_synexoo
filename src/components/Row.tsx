@@ -6,6 +6,7 @@ import { fetchActionMovies } from "@/lib/actions/movies/fetchMovies";
 import { ArrowRight } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import Thumbnail from "./Thumbnail";
+import Loading from "./Loading";
 
 interface Props {
   title: string;
@@ -14,13 +15,18 @@ interface Props {
 
 export default function Row({
   title,
-  movies,
+  fetcher,
 }: {
   title: string;
-  movies: Movie[];
+  fetcher: () => Promise<Movie[]>;
 }) {
   const rowRef = useRef<HTMLDivElement>(null);
-  const [isMoved, setIsMoved] = useState(false);
+  const [isMoved, setIsMoved] = useState(true);
+  const [movies, setMovies] = useState<Movie[]>([]);
+
+  useEffect(() => {
+    fetcher().then((movies) => setMovies(movies));
+  }, [fetcher, movies]);
 
   const handleClick = (direction: string) => {
     setIsMoved(true);
@@ -36,6 +42,8 @@ export default function Row({
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+
+  if (!movies) return <Loading />;
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
