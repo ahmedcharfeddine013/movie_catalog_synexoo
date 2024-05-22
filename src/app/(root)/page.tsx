@@ -28,7 +28,7 @@ export default function Home() {
   });
   if (!movies) return <Loading />;
   return (
-    <main>
+    <main className="h-[200vh]">
       <section>
         {/* <Banner /> */}
         <Row title="idk" movies={movies} />
