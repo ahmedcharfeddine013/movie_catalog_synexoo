@@ -1,36 +1,98 @@
-import requests from "../requests";
 
-export const getServerSideProps = async () => {
-  const [
-    netflixOriginals,
-    trendingNow,
-    topRated,
-    actionMovies,
-    comedyMovies,
-    horrorMovies,
-    romanceMovies,
-    documentaries,
-  ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
-    fetch(requests.fetchTrending).then((res) => res.json()),
-    fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) => res.json()),
-    fetch(requests.fetchComedyMovies).then((res) => res.json()),
-    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),
-  ]);
-
-  return {
-    props: {
-      netflixOriginals: netflixOriginals.results,
-      trendingNow: trendingNow.results,
-      topRated: topRated.results,
-      actionMovies: actionMovies.results,
-      comedyMovies: comedyMovies.results,
-      horrorMovies: horrorMovies.results,
-      romanceMovies: romanceMovies.results,
-      documentaries: documentaries.results,
-    },
-  };
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNWY5YTdmNGNlY2RhNTM1NjJmOWQwMzdkMzQ4Y2I2YSIsInN1YiI6IjY1OWJkYTc5ODc0MWM0MDI1ODk0ZDU4NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tpKCEBRCx5mkgy8UOLKVTL64FEWLTHZgdKQJ9QAFWDc",
+  },
 };
+
+export async function fetchTrendingNow() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/trending/all/week?api_key=d5f9a7f4cecda53562f9d037d348cb6a"
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchTopRated() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=d5f9a7f4cecda53562f9d037d348cb6a"
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchActionMovies() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28",
+      options
+    );
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching horror movies", error);
+  }
+}
+
+export async function fetchComedyMovies() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35",
+      options
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching comedy movies");
+  }
+}
+
+export async function fetchHorroMovies() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27",
+      options
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching Horror movies");
+  }
+}
+
+export async function fetchRomanceMovies() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10749",
+      options
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching Horror movies");
+  }
+}
+
+export async function fetchDocumantaries() {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=99",
+      options
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log("Error fetching Horror movies");
+  }
+}

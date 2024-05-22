@@ -3,6 +3,7 @@ import Loading from "@/components/Loading";
 import { Movie } from "@/types";
 import Image from "next/image";
 import { useState } from "react";
+import Row from "../../components/Row";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -28,8 +29,8 @@ export default function Home({
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <section>
-        
-        {/* <Banner netflixOriginals={netflixOriginals} /> */}
+        <Row />
+        {/* {JSON.stringify(actionMovies)} */}
       </section>
     </main>
   );

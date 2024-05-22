@@ -2,7 +2,7 @@ import { API_KEY } from "@/constants/movie";
 const BASE_URL = "https://api.themoviedb.org/3";
 
 const requests = {
-  fetchTrending: `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`,
+  fetchTrending: `${BASE_URL}/trending/all/week?api_key=${API_KEY}`,
   fetchNetflixOriginals: `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_networks=213`,
   fetchTopRated: `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`,
   fetchActionMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=28`,
