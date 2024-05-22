@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Thumbnail({ movie }: { movie: Movie }) {
   return (
     <Card
-      className="relative group h-48 min-w-[240px] cursor-pointer transition duration-100 ease-out  md:min-w-[300px] md:hover:scale-105"
+      className="relative group h-48 min-w-[240px] overflow-hidden cursor-pointer transition duration-100 ease-out  md:min-w-[300px] md:hover:scale-105"
       onClick={() => {}}
     >
       <Link href={`/movie/${movie.id}`}>
@@ -38,6 +38,6 @@ export default function Thumbnail({ movie }: { movie: Movie }) {
 
 export function MovieCardSkeleton() {
   return <Card>
-    
+
   </Card>;
 }

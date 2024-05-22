@@ -109,12 +109,28 @@ export async function fetchMovie(id: string) {
   }
 }
 
-export async function fetchImage (id : string) {
+export async function fetchImage(id: string) {
   try {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/images`, options)
-    const data = await res.json()
-    return data
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/images`,
+      options
+    );
+    const data = await res.json();
+    return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+}
+
+export async function getRecommanded(id: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`,
+      options
+    );
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.log(error);
   }
 }
