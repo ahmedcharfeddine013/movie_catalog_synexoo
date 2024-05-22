@@ -28,7 +28,7 @@ interface Props {
 
 export default function Home() {
   return (
-    <main className="h-[200vh]">
+    <main>
       <section className="md:space-y-24">
         <Row title="Trending Now" fetcher={fetchTrendingNow} />
         <Row title="Top Rated" fetcher={fetchTopRated} />

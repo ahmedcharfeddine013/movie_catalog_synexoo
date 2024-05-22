@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion} from "framer-motion";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +27,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={`flex items-center justify-center w-full py-5 fixed z-50 ${
+      className={`flex items-center justify-center w-full py-5 fixed z-[999] ${
         isScrolled ? "bg-background" : ""
       }`}
     >
