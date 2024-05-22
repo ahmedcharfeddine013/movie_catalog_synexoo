@@ -44,16 +44,16 @@ export default function Row({
     }
   };
 
-  if (!movies)
-    return (
-      <div className="flex flex-row items-center justify-center w-full">
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-        <MovieCardSkeleton />
-      </div>
-    );
+  // if (!movies)
+  //   return (
+  //     <div className="flex flex-row items-center justify-center w-full">
+  //       <MovieCardSkeleton />
+  //       <MovieCardSkeleton />
+  //       <MovieCardSkeleton />
+  //       <MovieCardSkeleton />
+  //       <MovieCardSkeleton />
+  //     </div>
+  //   );
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
@@ -67,14 +67,24 @@ export default function Row({
           }`}
           onClick={() => handleClick("left")}
         />
-        <div
-          ref={rowRef}
-          className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
-        >
-          {movies.map((movie) => (
-            <Thumbnail key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {!movies ? (
+          <div className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2">
+            <MovieCardSkeleton />
+            <MovieCardSkeleton />
+            <MovieCardSkeleton />
+            <MovieCardSkeleton />
+            <MovieCardSkeleton />
+          </div>
+        ) : (
+          <div
+            ref={rowRef}
+            className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
+          >
+            {movies.map((movie) => (
+              <Thumbnail key={movie.id} movie={movie} />
+            ))}
+          </div>
+        )}
         <ArrowRight
           className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
           onClick={() => handleClick("right")}

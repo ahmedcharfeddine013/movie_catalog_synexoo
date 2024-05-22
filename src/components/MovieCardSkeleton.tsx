@@ -10,7 +10,7 @@ import {
 
 export function MovieCardSkeleton() {
   return (
-    <Card className="overflow-hidden flex flex-col animate-pulse">
+    <Card className="overflow-hidden flex flex-col animate-pulse w-[360px]">
       <div className="w-full aspect-video bg-gray-300" />
       <CardHeader>
         <CardTitle>
