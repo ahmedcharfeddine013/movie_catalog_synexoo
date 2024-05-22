@@ -20,10 +20,18 @@ interface Props {
 }
 
 export default function Home() {
+  const [movies, setMovies] = useState<Movie[]>();
+  const [movie, setMovie] = useState<Movie>();
+
+  useEffect(() => {
+    fetchTrendingNow().then((movies) => setMovies(movies));
+  });
+  if (!movies) return <Loading />;
   return (
     <main>
       <section>
-        <Banner />
+        {/* <Banner /> */}
+        <Row title="idk" movies={movies} />
       </section>
     </main>
   );
