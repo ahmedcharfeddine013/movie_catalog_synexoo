@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 import Thumbnail from "./Thumbnail";
 import Loading from "./Loading";
+import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
 interface Props {
   title: string;
@@ -43,7 +44,16 @@ export default function Row({
     }
   };
 
-  if (!movies) return <Loading />;
+  if (!movies)
+    return (
+      <div className="flex flex-row items-center justify-center w-full">
+        <MovieCardSkeleton />
+        <MovieCardSkeleton />
+        <MovieCardSkeleton />
+        <MovieCardSkeleton />
+        <MovieCardSkeleton />
+      </div>
+    );
 
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
