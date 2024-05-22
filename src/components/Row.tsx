@@ -44,17 +44,6 @@ export default function Row({
     }
   };
 
-  // if (!movies)
-  //   return (
-  //     <div className="flex flex-row items-center justify-center w-full">
-  //       <MovieCardSkeleton />
-  //       <MovieCardSkeleton />
-  //       <MovieCardSkeleton />
-  //       <MovieCardSkeleton />
-  //       <MovieCardSkeleton />
-  //     </div>
-  //   );
-
   return (
     <div className="h-40 space-y-0.5 md:space-y-2">
       <h1 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">

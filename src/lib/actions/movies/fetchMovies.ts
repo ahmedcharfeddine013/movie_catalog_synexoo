@@ -108,3 +108,13 @@ export async function fetchMovie(id: string) {
     console.log(error);
   }
 }
+
+export async function fetchImage (id : string) {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/images`, options)
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}

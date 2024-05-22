@@ -19,10 +19,17 @@ export default function MoviePage({
   return (
     <div>
       <section className="relative">
-        {/* <div className="w-screen h-screen absolute left-0 top-0">
-          <Image src={movie.poster_path} alt="" fill />
-        </div> */}
-        <div>{movie.id}</div>
+        <div className="w-screen h-screen absolute left-0 top-0">
+          <Image
+            src={`https://image.tmdb.org/t/p/original${
+              movie.backdrop_path || movie.poster_path
+            }`}
+            alt=""
+            fill
+            objectFit="cover"
+          />
+        </div>
+        {/* <div>{movie.poster_path}</div> */}
       </section>
     </div>
   );
