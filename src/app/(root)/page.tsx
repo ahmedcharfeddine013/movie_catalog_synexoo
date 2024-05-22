@@ -19,22 +19,11 @@ interface Props {
   documentaries: Movie[];
 }
 
-export default function Home({
-  netflixOriginals,
-  actionMovies,
-  comedyMovies,
-  documentaries,
-  horrorMovies,
-  romanceMovies,
-  topRated,
-  trendingNow,
-}: Props) {
+export default function Home() {
   return (
     <main>
       <section>
         <Banner />
-        {/* <Row /> */}
-        {/* {JSON.stringify(actionMovies)} */}
       </section>
     </main>
   );
