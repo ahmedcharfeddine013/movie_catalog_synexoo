@@ -134,3 +134,16 @@ export async function getRecommanded(id: string) {
     console.log(error);
   }
 }
+
+export async function fetchReviews(id: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?language=en-US&page=1`,
+      options
+    );
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
+}

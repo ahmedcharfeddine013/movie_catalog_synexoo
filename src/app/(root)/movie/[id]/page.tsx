@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import RecommandedMovies from "../../../../components/RecommandedMovies";
+import MovieReviews from "../../../../components/MovieReviews";
 
 export default function MoviePage({
   params: { id },
@@ -49,7 +50,7 @@ export default function MoviePage({
             <p className="flex  gap-2">
               {" "}
               <Star className="text-yellow-500" />{" "}
-              {movie.vote_average.toFixed()}{" "}
+              {movie.vote_average ? movie.vote_average.toFixed() : ""}{" "}
             </p>
             <p>{movie.release_date}</p>
           </div>
@@ -58,6 +59,10 @@ export default function MoviePage({
       <section className="flex flex-col gap-4 items-center justify-center py-5 ">
         <h1 className="font-bold text-2xl">Similar Movies</h1>
         <RecommandedMovies id={movie.id.toString()} />
+      </section>
+      <section className="flex flex-col gap-4 items-center justify-center py-5 ">
+        <h1 className="font-bold text-2xl">Reviews</h1>
+        <MovieReviews id={movie.id.toString()} />
       </section>
     </div>
   );
