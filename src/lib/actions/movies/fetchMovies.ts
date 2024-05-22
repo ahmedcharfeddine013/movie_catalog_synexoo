@@ -1,4 +1,3 @@
-
 const options = {
   method: "GET",
   headers: {
@@ -14,7 +13,7 @@ export async function fetchTrendingNow() {
       "https://api.themoviedb.org/3/trending/all/week?api_key=d5f9a7f4cecda53562f9d037d348cb6a"
     );
     const data = await res.json();
-    return data;
+    return data.results;
   } catch (error) {
     console.log(error);
   }
@@ -25,8 +24,8 @@ export async function fetchTopRated() {
     const res = await fetch(
       "https://api.themoviedb.org/3/movie/top_rated?api_key=d5f9a7f4cecda53562f9d037d348cb6a"
     );
-    const data = res.json();
-    return data;
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log(error);
   }
@@ -39,7 +38,7 @@ export async function fetchActionMovies() {
       options
     );
     const data = await res.json();
-    return data;
+    return data.results;
   } catch (error) {
     console.log("Error fetching horror movies", error);
   }
@@ -51,8 +50,8 @@ export async function fetchComedyMovies() {
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35",
       options
     );
-    const data = res.json();
-    return data;
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log("Error fetching comedy movies");
   }
@@ -64,8 +63,8 @@ export async function fetchHorroMovies() {
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=27",
       options
     );
-    const data = res.json();
-    return data;
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log("Error fetching Horror movies");
   }
@@ -77,8 +76,8 @@ export async function fetchRomanceMovies() {
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10749",
       options
     );
-    const data = res.json();
-    return data;
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log("Error fetching Horror movies");
   }
@@ -90,8 +89,8 @@ export async function fetchDocumantaries() {
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=99",
       options
     );
-    const data = res.json();
-    return data;
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log("Error fetching Horror movies");
   }

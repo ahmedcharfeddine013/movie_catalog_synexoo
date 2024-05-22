@@ -13,11 +13,19 @@ interface Props {
 }
 
 export default function Row() {
-  const [movies, setMovies] = useState<Movie[] | null>();
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     fetchActionMovies().then((movies) => setMovies(movies));
   });
 
-  return <div>{JSON.stringify(movies)}</div>;
+  if (!movies) return <p>loading...</p>;
+
+  return (
+    <div>
+      {movies.map((movie) => (
+        <Thumbnail key={movie.id} movie={movie} />
+      ))}
+    </div>
+  );
 }

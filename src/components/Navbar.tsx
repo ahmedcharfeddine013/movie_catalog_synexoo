@@ -11,7 +11,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="flex items-center justify-center w-full py-5 fixed"
+      className="flex items-center justify-center w-full py-5 fixed z-50"
     >
       <Logo />
     </motion.nav>
