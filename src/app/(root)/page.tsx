@@ -29,14 +29,17 @@ interface Props {
 export default function Home() {
   return (
     <main>
-      <section className="md:space-y-24">
-        <Row title="Trending Now" fetcher={fetchTrendingNow} />
-        <Row title="Top Rated" fetcher={fetchTopRated} />
-        <Row title="Action Thrillers" fetcher={fetchActionMovies} />
-        <Row title="Comedy" fetcher={fetchComedyMovies} />
-        <Row title="Romance" fetcher={fetchRomanceMovies} />
-        <Row title="Documantaries" fetcher={fetchDocumantaries} />
-      </section>
+      <div >
+        <Banner />
+        <section className="md:space-y-24">
+          <Row title="Trending Now" fetcher={fetchTrendingNow} />
+          <Row title="Top Rated" fetcher={fetchTopRated} />
+          <Row title="Action Thrillers" fetcher={fetchActionMovies} />
+          <Row title="Comedy" fetcher={fetchComedyMovies} />
+          <Row title="Romance" fetcher={fetchRomanceMovies} />
+          <Row title="Documantaries" fetcher={fetchDocumantaries} />
+        </section>
+      </div>
     </main>
   );
 }
