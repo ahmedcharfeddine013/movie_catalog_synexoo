@@ -4,6 +4,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { motion } from "framer-motion";
 import SearchMovie from "./SearchMovie";
+import Loading from "./Loading";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,8 +35,15 @@ export default function Navbar() {
     >
       <div className="hidden md:block"></div>
       <Logo />
-
-      <SearchMovie />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center w-full">
+            <Loading />
+          </div>
+        }
+      >
+        <SearchMovie />
+      </Suspense>
     </motion.nav>
   );
 }
