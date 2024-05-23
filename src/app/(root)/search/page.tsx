@@ -26,12 +26,11 @@ export default function SearchPage() {
           Search results for <span className="text-primary">{searchTerm}</span>
         </h1>
       </div>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 place-items-center md:grid-cols-3 lg:grid-cols-4 gap-5">
         {movies.map((movie) => (
           <Thumbnail key={movie.id} movie={movie} />
         ))}
       </div>
-      
     </div>
   );
 }
