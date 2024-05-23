@@ -20,7 +20,7 @@ export default function SearchPage() {
       </div>
     );
   return (
-    <div className="px-10 py-20">
+    <div className="px-10 py-20 space-y-5">
       <div>
         <h1 className="text-xl">
           Search results for <span className="text-primary">{searchTerm}</span>

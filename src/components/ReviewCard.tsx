@@ -6,7 +6,7 @@ import { Star } from "lucide-react";
 
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="flex flex-col items-center gap-5 w-[80%] justify-center bg-gray-800/80 p-5 rounded-md ">
+    <div className="flex flex-col items-center gap-5 w-[80%] justify-center border-2  rounded-none p-5  ">
       <div className="flex items-center justify-start w-full gap-3">
         <div className="h-12 w-12 rounded-full overflow-hidden">
           <Image

@@ -18,6 +18,7 @@ export default function SearchMovie() {
     <form onSubmit={handleSubmit} className="flex items-center justify-center ">
       <Input
         placeholder="Search..."
+        type="text"
         className="w-48 rounded-none"
         onChange={(e) => setSearchInput(e.target.value)}
       />

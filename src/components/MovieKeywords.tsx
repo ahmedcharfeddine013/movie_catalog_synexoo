@@ -14,7 +14,7 @@ export default function MovieKeywords({ id }: { id: string }) {
   return (
     <div className="flex items-center flex-wrap justify-center gap-4 flex-row">
       {keyWords.map((keyword) => (
-        <div key={keyword.id} className="bg-primary/80  px-3 py-2 rounded-sm">
+        <div key={keyword.id} className="bg-white text-primary rounded-none  px-3 py-2">
           {keyword.name}
         </div>
       ))}
