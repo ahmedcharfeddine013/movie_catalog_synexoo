@@ -5,9 +5,11 @@ import { fetchMovie } from "@/lib/actions/movies/fetchMovies";
 import { Movie } from "@/types";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { Play, Star } from "lucide-react";
 import RecommandedMovies from "../../../../components/RecommandedMovies";
 import MovieReviews from "../../../../components/MovieReviews";
+import MovieKeywords from "@/components/MovieKeywords";
+import { Button } from "@/components/ui/button";
 
 export default function MoviePage({
   params: { id },
@@ -53,6 +55,13 @@ export default function MoviePage({
               {movie.vote_average ? movie.vote_average.toFixed() : ""}{" "}
             </p>
             <p>{movie.release_date}</p>
+            <div className="w-full flex  justify-start">
+              <MovieKeywords id={movie.id.toString()} />
+            </div>
+            <Button className="rounded-none group bg-transparent border-primary border-2 w-fit text-xl p-6 flex gap-2">
+              <Play className="group-hover:text-white duration-100 ease-in transition-all text-primary" />{" "}
+              Watch Trailer
+            </Button>
           </div>
         </div>
       </section>
