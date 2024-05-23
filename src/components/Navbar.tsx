@@ -34,9 +34,8 @@ export default function Navbar() {
     >
       <div className="hidden md:block"></div>
       <Logo />
-      <Suspense>
-        <SearchMovie />
-      </Suspense>
+
+      <SearchMovie />
     </motion.nav>
   );
 }
