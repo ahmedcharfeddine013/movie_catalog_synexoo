@@ -161,14 +161,14 @@ export async function fetchKeywords(id: string) {
   }
 }
 
-export async function searchMovies(search: any) {
+export async function searchMovies(search: any, page = 1) {
   try {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${search}`,
+      `https://api.themoviedb.org/3/search/movie?query=${search}&page=${page}`,
       options
     );
     const data = await res.json();
-    return data.results;
+    return data;
   } catch (error) {
     console.log(error);
   }

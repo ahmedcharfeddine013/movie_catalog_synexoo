@@ -11,7 +11,7 @@ export default function SearchPage() {
   const [movies, setMovies] = useState<Movie[]>();
   const searchTerm = useSearchParams();
   useEffect(() => {
-    searchMovies(searchTerm).then((data) => setMovies(data));
+    searchMovies(searchTerm).then((data) => setMovies(data.results));
   });
   if (!movies)
     return (
@@ -31,6 +31,7 @@ export default function SearchPage() {
           <Thumbnail key={movie.id} movie={movie} />
         ))}
       </div>
+      
     </div>
   );
 }
