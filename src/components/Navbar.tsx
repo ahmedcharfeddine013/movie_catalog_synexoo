@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { motion } from "framer-motion";
 import SearchMovie from "./SearchMovie";
@@ -34,9 +34,9 @@ export default function Navbar() {
     >
       <div className="hidden md:block"></div>
       <Logo />
-      <div>
+      <Suspense>
         <SearchMovie />
-      </div>
+      </Suspense>
     </motion.nav>
   );
 }
