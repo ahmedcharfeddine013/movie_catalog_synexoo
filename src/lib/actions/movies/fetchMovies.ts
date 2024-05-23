@@ -161,7 +161,7 @@ export async function fetchKeywords(id: string) {
   }
 }
 
-export async function searchMovies(search: string) {
+export async function searchMovies(search: any) {
   try {
     const res = await fetch(
       `https://api.themoviedb.org/3/search/movie?query=${search}`,
