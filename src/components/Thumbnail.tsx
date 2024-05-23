@@ -37,7 +37,5 @@ export default function Thumbnail({ movie }: { movie: Movie }) {
 }
 
 export function MovieCardSkeleton() {
-  return <Card>
-
-  </Card>;
+  return <Card></Card>;
 }

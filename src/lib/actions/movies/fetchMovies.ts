@@ -147,3 +147,16 @@ export async function fetchReviews(id: string) {
     console.log(error);
   }
 }
+
+export async function fetchKeywords(id: string) {
+  try {
+    const res = await fetch(
+      "https://api.themoviedb.org/3/movie/693134/keywords",
+      options
+    );
+    const data = await res.json();
+    return data.keywords;
+  } catch (error) {
+    console.log(error);
+  }
+}

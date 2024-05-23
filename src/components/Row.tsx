@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import Thumbnail from "./Thumbnail";
 import Loading from "./Loading";
 import { MovieCardSkeleton } from "./MovieCardSkeleton";
+import { motion } from "framer-motion";
 
 interface Props {
   title: string;
@@ -45,7 +46,11 @@ export default function Row({
   };
 
   return (
-    <div className="h-40 space-y-0.5 md:space-y-2">
+    <motion.div
+      initial={{ opacity: 0, x: -200 }}
+      animate={{ opacity: 1, x: 0 }}
+      className="h-40 space-y-0.5 md:space-y-2"
+    >
       <h1 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
         {title}
       </h1>
@@ -79,6 +84,6 @@ export default function Row({
           onClick={() => handleClick("right")}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }

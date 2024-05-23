@@ -45,3 +45,8 @@ export interface Backdrop {
 export interface BackdropsData {
   backdrops: Backdrop[];
 }
+
+export interface KeywordsProps {
+  id: string;
+  name: string;
+}
