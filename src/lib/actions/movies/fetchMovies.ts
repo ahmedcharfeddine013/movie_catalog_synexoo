@@ -151,11 +151,24 @@ export async function fetchReviews(id: string) {
 export async function fetchKeywords(id: string) {
   try {
     const res = await fetch(
-      "https://api.themoviedb.org/3/movie/693134/keywords",
+      `https://api.themoviedb.org/3/movie/${id}/keywords`,
       options
     );
     const data = await res.json();
     return data.keywords;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function searchMovies(search: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${search}`,
+      options
+    );
+    const data = await res.json();
+    return data.results;
   } catch (error) {
     console.log(error);
   }
