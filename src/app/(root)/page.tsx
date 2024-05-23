@@ -29,9 +29,9 @@ interface Props {
 export default function Home() {
   return (
     <main>
-      <div >
+      <div className="flex flex-col gap-5">
         <Banner />
-        <section className="md:space-y-24">
+        <section className=" md:space-y-4">
           <Row title="Trending Now" fetcher={fetchTrendingNow} />
           <Row title="Top Rated" fetcher={fetchTopRated} />
           <Row title="Action Thrillers" fetcher={fetchActionMovies} />

@@ -49,7 +49,7 @@ export default function Row({
     <motion.div
       initial={{ opacity: 0, x: -200 }}
       animate={{ opacity: 1, x: 0 }}
-      className="h-40 space-y-0.5 md:space-y-2"
+      className=" space-y-0.5 md:space-y-2 py-5 pl-3"
     >
       <h1 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
         {title}

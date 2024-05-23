@@ -28,11 +28,11 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={`grid grid-cols-3 w-full place-items-center py-5 fixed z-[999] ${
+      className={`grid grid-cols-2 md:grid-cols-3 w-full place-items-center py-5 fixed z-[999] ${
         isScrolled ? "bg-background" : ""
       }`}
     >
-      <div></div>
+      <div className="hidden md:block"></div>
       <Logo />
       <div>
         <SearchMovie />

@@ -19,24 +19,8 @@ export default function RecommandedMovies({ id }: { id: string }) {
   });
   if (!movies || !recMovies) return <Loading />;
   return (
-    <div className="flex flex-row gap-6">
+    <div className="flex flex-col lg:flex-row gap-6">
       {recMovies.map((movie) => (
-        // <Card key={movie.id}>
-        //   <Link href={`/movie/${movie.id}`}>
-        //     <div>
-        //       <Image
-        //         src={`https://image.tmdb.org/t/p/w500${
-        //           movie.backdrop_path || movie.poster_path
-        //         }`}
-        //         alt=""
-        //         width={400}
-        //         height={300}
-        //         className="aspect-video"
-        //       />
-        //     </div>
-        //     <p className="text-xl  py-3 px-2">{movie.title || movie.name}</p>
-        //   </Link>
-        // </Card>
         <Thumbnail key={movie.id} movie={movie} />
       ))}
     </div>

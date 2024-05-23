@@ -19,7 +19,7 @@ export default function SearchMovie() {
       <Input
         placeholder="Search..."
         type="text"
-        className="w-48 rounded-none"
+        className="w-24 md:w-48 rounded-none"
         onChange={(e) => setSearchInput(e.target.value)}
       />
       <Button

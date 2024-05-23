@@ -43,8 +43,8 @@ export default function Banner() {
       <div className="absolute bottom-0 bg-gradient-to-t z-[-30] from-background to-transparent h-[50%] w-full"></div>
       <div className="flex flex-col items-center justify-center gap-5">
         <div className="flex flex-col items-center justify-center gap-6">
-          <h1 className="text-[8rem]">{movie.name || movie.title}</h1>
-          <h3 className="text-2xl">{movie.release_date}</h3>
+          <h1 className="text-4xl lg:text-[8rem]">{movie.name || movie.title}</h1>
+          <h3 className="text-xl lg:text-2xl">{movie.release_date}</h3>
           <div className="w-[80%]">
             <MovieKeywords id={movie.id.toString()} />
           </div>
