@@ -10,6 +10,8 @@ import RecommandedMovies from "../../../../components/RecommandedMovies";
 import MovieReviews from "../../../../components/MovieReviews";
 import MovieKeywords from "@/components/MovieKeywords";
 import { Button } from "@/components/ui/button";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function MoviePage({
   params: { id },
@@ -20,6 +22,24 @@ export default function MoviePage({
   useEffect(() => {
     fetchMovie(id).then((movies) => setMovie(movies));
   }, [id]);
+
+  useGSAP(() => {
+    gsap.to("#movie-img", {
+      opacity: 1,
+      scale: 1,
+    });
+    gsap.to("#movie-poster", {
+      opacity: 1,
+      scale: 1,
+    });
+    gsap.to("#movie-title", {
+      opacity: 1,
+    });
+    gsap.to("#movie-overview", {
+      opacity: 1,
+    });
+  }, [movie]);
+
   if (!movie)
     return (
       <div className="flex items-center justify-center w-full h-screen">
@@ -29,7 +49,10 @@ export default function MoviePage({
   return (
     <div className="max-w-screen h-full">
       <section className="relative flex h-full pt-20 md:h-screen items-center justify-center ">
-        <div className="w-full max-w-screen h-full absolute left-0 top-0 z-[-50]">
+        <div
+          id="movie-img"
+          className="w-full max-w-screen h-full absolute left-0 opacity-0 scale-150 top-0 z-[-50]"
+        >
           <Image
             src={`https://image.tmdb.org/t/p/original${
               movie.backdrop_path || movie.poster_path
@@ -42,7 +65,7 @@ export default function MoviePage({
         <div className="absolute bottom-0 bg-black/50 z-[-40] to-transparent h-full w-full"></div>
         <div className="absolute bottom-0 bg-gradient-to-t z-[-30] from-background to-transparent h-[50%] w-full"></div>
         <div className="flex flex-col md:grid md:grid-cols-3 px-[200px] gap-6 md:gap-20 ">
-          <div>
+          <div id="movie-poster" className="opacity-0 scale-50">
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt=""
@@ -52,10 +75,15 @@ export default function MoviePage({
             />
           </div>
           <div className="flex flex-col w-full items-center justify-center md:justify-start md:items-start col-span-2 gap-4">
-            <h1 className="text-xl md:text-2xl font-bold">
+            <h1
+              id="movie-title"
+              className="text-xl md:text-2xl font-bold opacity-0"
+            >
               {movie.name || movie.title}
             </h1>
-            <p className="text-14px md:text-sm">{movie.overview}</p>
+            <p id="movie-overview" className="text-14px md:text-sm opacity-0">
+              {movie.overview}
+            </p>
             <p className="flex  gap-2">
               {" "}
               <Star className="text-yellow-500" />{" "}
