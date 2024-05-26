@@ -11,9 +11,13 @@ import { Button } from "./ui/button";
 const outfit = Outfit({ weight: "400", subsets: ["latin"] });
 import { Play } from "lucide-react";
 import MovieKeywords from "./MovieKeywords";
+import { useRecoilState } from "recoil";
+import { modalState, movieState } from "@/atoms/modalAtoms";
 
 export default function Banner() {
   const [movie, setMovie] = useState<Movie>();
+  const [showModal, setShowModal] = useRecoilState(modalState);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   useEffect(() => {
     fetchMovie("693134").then((data) => setMovie(data));
@@ -43,14 +47,22 @@ export default function Banner() {
       <div className="absolute bottom-0 bg-gradient-to-t z-[-30] from-background to-transparent h-[50%] w-full"></div>
       <div className="flex flex-col items-center justify-center gap-5">
         <div className="flex flex-col items-center justify-center gap-6">
-          <h1 className="text-4xl lg:text-[8rem]">{movie.name || movie.title}</h1>
+          <h1 className="text-4xl lg:text-[8rem]">
+            {movie.name || movie.title}
+          </h1>
           <h3 className="text-xl lg:text-2xl">{movie.release_date}</h3>
           <div className="w-[80%]">
             <MovieKeywords id={movie.id.toString()} />
           </div>
         </div>
         <div>
-          <Button className="rounded-none group bg-transparent border-primary border-2 text-xl p-6 flex gap-2">
+          <Button
+            className="rounded-none group bg-transparent border-primary border-2 text-xl p-6 flex gap-2"
+            onClick={() => {
+              setCurrentMovie(movie);
+              setShowModal(true);
+            }}
+          >
             <Play className="group-hover:text-white duration-100 ease-in transition-all text-primary" />{" "}
             Watch Trailer
           </Button>

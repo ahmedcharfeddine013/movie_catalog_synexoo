@@ -173,3 +173,15 @@ export async function searchMovies(search: any, page = 1) {
     console.log(error);
   }
 }
+export async function fetchCasting(id: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits`,
+      options
+    );
+    const data = await res.json();
+    return data.cast;
+  } catch (error) {
+    console.log(error);
+  }
+}
