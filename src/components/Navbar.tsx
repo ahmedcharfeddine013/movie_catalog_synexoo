@@ -5,6 +5,8 @@ import Logo from "./Logo";
 import { motion } from "framer-motion";
 import SearchMovie from "./SearchMovie";
 import Loading from "./Loading";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,11 +27,19 @@ export default function Navbar() {
     };
   }, []);
 
+  useGSAP(() => {
+    gsap.to("#navbar", {
+      opacity: 1,
+      y: 0,
+      delay: 1,
+      ease: "power1.in",
+    });
+  });
+
   return (
-    <motion.nav
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className={`grid grid-cols-2 md:grid-cols-3 w-full place-items-center py-5 fixed z-[999] ${
+    <nav
+      id="navbar"
+      className={`grid grid-cols-2 md:grid-cols-3 w-full place-items-center py-5 opacity-0 -translate-y-20 fixed z-[999] ${
         isScrolled ? "bg-background" : ""
       }`}
     >
@@ -44,6 +54,6 @@ export default function Navbar() {
       >
         <SearchMovie />
       </Suspense>
-    </motion.nav>
+    </nav>
   );
 }
