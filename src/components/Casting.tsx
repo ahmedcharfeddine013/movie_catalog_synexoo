@@ -5,6 +5,7 @@ import CastCard from "./CastCard";
 import Loading from "./Loading";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Casting = ({ id }: { id: string }) => {
   const [cast, setCast] = useState<CastMember[]>([]);
@@ -67,6 +68,9 @@ const Casting = ({ id }: { id: string }) => {
             ))}
           </div>
         )}
+        <Link href={`/movie/${id}/casting`} className="hover:underline px-4 ">
+          View all
+        </Link>
         <ArrowRight
           className={`absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100`}
           onClick={() => handleClick("right")}
