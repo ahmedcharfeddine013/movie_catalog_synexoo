@@ -6,18 +6,22 @@ import React from "react";
 
 const CastSmallCard = ({ cast }: { cast: CastMember }) => {
   return (
-    <Card>
-      <div>
+    <Card className="flex flex-row justify-start items-start overflow-hidden">
+      <div className="w-24 h-24 justify-center items-center flex overflow-hidden">
         <Image
           src={
             `https://image.tmdb.org/t/p/original/${cast.profile_path}` ||
             unkown_picture
           }
           alt={cast.name}
+          width={200}
+          height={200}
         />
       </div>
-      <p className="font-bold text-lg">{cast.name}</p>
-      <p>{cast.character}</p>
+      <div className="px-4">
+        <p className="font-bold text-lg">{cast.name}</p>
+        <p>{cast.character}</p>
+      </div>
     </Card>
   );
 };

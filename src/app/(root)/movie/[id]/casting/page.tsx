@@ -13,11 +13,30 @@ const CastingPage = () => {
   const [cast, setCast] = useState<CastMember[]>([]);
   const [movie, setMovie] = useState<Movie>();
   const [crew, setCrew] = useState<CastMember[]>([]);
+  const [otherCrew, setOtherCrew] = useState<CastMember[]>([]);
 
   useEffect(() => {
     fetchMovie(id.toString()).then((data) => setMovie(data));
     fetchCasting(id.toString()).then((data) => setCast(data));
   });
+
+  useEffect(() => {
+    if (cast) {
+      const filteredCrew = cast.filter(
+        (c) => (c.known_for_department = "Acting")
+      );
+      setCrew(filteredCrew);
+    }
+  }, [cast]);
+
+  useEffect(() => {
+    if (cast) {
+      const filterOtherCrew = cast.filter(
+        (c) => c.known_for_department != "Acting"
+      );
+      setOtherCrew(filterOtherCrew);
+    }
+  }, [cast]);
 
   if (!cast || !movie)
     return (
@@ -28,12 +47,26 @@ const CastingPage = () => {
   return (
     <div>
       <MoviePosterHeader movie={movie} />
-      <div className="flex items-start justify-center gap-10">
-        <div className="flex items-center justify-center gap-4">
-          <h1 className="font-bold text-xl">Crew</h1>
-          {cast.map((c) => (
-            <CastSmallCard cast={c} key={c.id} />
-          ))}
+      <div className="flex items-start justify-start px-20 gap-10">
+        <div className="flex items-start flex-col justify-start gap-4">
+          <h1 className="font-bold text-xl">
+            Cast <span>{crew.length}</span>
+          </h1>
+          <div className="flex flex-col gap-4">
+            {crew.map((c) => (
+              <CastSmallCard cast={c} key={c.id} />
+            ))}
+          </div>
+        </div>
+        <div className="flex items-start flex-col justify-start gap-4">
+          <h1 className="font-bold text-xl">
+            Crew <span>{otherCrew.length}</span>
+          </h1>
+          <div className="flex flex-col gap-4">
+            {otherCrew.map((c) => (
+              <CastSmallCard cast={c} key={c.id} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
