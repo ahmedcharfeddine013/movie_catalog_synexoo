@@ -52,7 +52,9 @@ export default function MoviePage({
             />
           </div>
           <div className="flex flex-col w-full items-center justify-center md:justify-start md:items-start col-span-2 gap-4">
-            <h1 className="text-xl md:text-2xl font-bold">{movie.name || movie.title}</h1>
+            <h1 className="text-xl md:text-2xl font-bold">
+              {movie.name || movie.title}
+            </h1>
             <p className="text-14px md:text-sm">{movie.overview}</p>
             <p className="flex  gap-2">
               {" "}
