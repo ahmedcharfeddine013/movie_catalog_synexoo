@@ -12,6 +12,7 @@ import MovieKeywords from "@/components/MovieKeywords";
 import { Button } from "@/components/ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Casting from "@/components/Casting";
 
 export default function MoviePage({
   params: { id },
@@ -99,6 +100,9 @@ export default function MoviePage({
             </Button>
           </div>
         </div>
+      </section>
+      <section>
+        <Casting id={movie.id.toString()} />
       </section>
       <section className="flex flex-col gap-4 items-center justify-center py-5 ">
         <h1 className="font-bold text-2xl">Similar Movies</h1>
