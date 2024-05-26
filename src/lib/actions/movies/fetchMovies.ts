@@ -185,3 +185,13 @@ export async function fetchCasting(id: string) {
     console.log(error);
   }
 }
+
+export async function fetchPerson (id : string) {
+  try {
+    const res  = await fetch('')
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.log(`Error fetching this person id : ${id}` , error)
+  }
+}
