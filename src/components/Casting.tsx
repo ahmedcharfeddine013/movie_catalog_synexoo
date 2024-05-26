@@ -45,7 +45,7 @@ const Casting = ({ id }: { id: string }) => {
       className=" space-y-0.5 md:space-y-2 py-5 pl-3"
     >
       <h1 className="w-56 cursor-pointer text-sm font-semibold text-[#e5e5e5] transition duration-200 hover:text-white md:text-2xl">
-        Casting
+        Top Billed Cast
       </h1>
       <div className="relative group md:-md-2">
         <ArrowLeft
