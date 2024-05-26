@@ -186,12 +186,15 @@ export async function fetchCasting(id: string) {
   }
 }
 
-export async function fetchPerson (id : string) {
+export async function fetchPerson(id: string) {
   try {
-    const res  = await fetch('')
-    const data = await res.json()
-    return data
+    const res = await fetch(
+      `https://api.themoviedb.org/3/person/${id}`,
+      options
+    );
+    const data = await res.json();
+    return data;
   } catch (error) {
-    console.log(`Error fetching this person id : ${id}` , error)
+    console.log(`Error fetching this person id : ${id}`, error);
   }
 }

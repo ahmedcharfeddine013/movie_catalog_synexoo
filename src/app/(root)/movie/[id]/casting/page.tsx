@@ -45,9 +45,9 @@ const CastingPage = () => {
       </div>
     );
   return (
-    <div>
+    <div className="px-10 lg:px-20">
       <MoviePosterHeader movie={movie} />
-      <div className="flex items-start justify-start px-20 gap-10">
+      <div className="flex items-start justify-start gap-10">
         <div className="flex items-start flex-col justify-start gap-4">
           <h1 className="font-bold text-xl">
             Cast <span>{crew.length}</span>
