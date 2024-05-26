@@ -23,7 +23,7 @@ const CastingPage = () => {
   useEffect(() => {
     if (cast) {
       const filteredCrew = cast.filter(
-        (c) => (c.known_for_department = "Acting")
+        (c) => (c.known_for_department == "Acting")
       );
       setCrew(filteredCrew);
     }
@@ -32,7 +32,7 @@ const CastingPage = () => {
   useEffect(() => {
     if (cast) {
       const filterOtherCrew = cast.filter(
-        (c) => c.known_for_department != "Acting"
+        (c) => c.known_for_department !== "Acting"
       );
       setOtherCrew(filterOtherCrew);
     }
@@ -47,7 +47,7 @@ const CastingPage = () => {
   return (
     <div className="px-10 lg:px-20">
       <MoviePosterHeader movie={movie} />
-      <div className="flex items-start justify-start gap-10">
+      <div className="flex items-start justify-center gap-10">
         <div className="flex items-start flex-col justify-start gap-4">
           <h1 className="font-bold text-xl">
             Cast <span>{crew.length}</span>

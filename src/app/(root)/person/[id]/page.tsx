@@ -1,4 +1,5 @@
 "use client";
+
 import Loading from "@/components/Loading";
 import { fetchPerson } from "@/lib/actions/movies/fetchMovies";
 import { PersonDetails } from "@/types";

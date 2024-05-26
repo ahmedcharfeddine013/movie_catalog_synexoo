@@ -5,7 +5,7 @@ import React from "react";
 
 const MoviePosterHeader = ({ movie }: { movie: Movie }) => {
   return (
-    <div className="w-full py-16 gap-5 flex items-start justify-start ">
+    <div className="w-full py-20 flex-col gap-5 flex items-center justify-center ">
       <div className="overflow-hidden flex items-center justify-center">
         <Image
           src={`https://image.tmdb.org/t/p/original/${
