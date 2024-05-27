@@ -1,7 +1,7 @@
 "use client";
 
-import { Movie } from "@/types";
-import React, { useState } from "react";
+import { Movie, Video } from "@/types";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { Modal } from "@mui/material";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,9 @@ import { Plus } from "lucide-react";
 import { ThumbsUp } from "lucide-react";
 import { Volume } from "lucide-react";
 import { Volume2 } from "lucide-react";
+import TrailerFetcher from "./TrailerFetcher";
+import { fetchMovieTrailer } from "@/lib/actions/movies/fetchMovies";
+import Loading from "@/components/Loading";
 
 const TrailerPlayer = ({ movie }: { movie: Movie }) => {
   const [open, setOpen] = useState(false);
@@ -19,6 +22,26 @@ const TrailerPlayer = ({ movie }: { movie: Movie }) => {
   const [playing, setPlaying] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [videos, setVideos] = useState<Video[]>();
+  const [trailer, setTrailer] = useState<Video>();
+
+  useEffect(() => {
+    fetchMovieTrailer(movie.id.toString()).then((data) => setVideos(data));
+  }, [movie.id]);
+
+  useEffect(() => {
+    if (videos) {
+      const tr = videos.find((vid) => vid.type == "Trailer");
+      setTrailer(tr);
+    }
+  }, [videos]);
+
+  if (!trailer)
+    return (
+      <div className="w-full flex items-center justify-center">
+        <Loading />
+      </div>
+    );
   return (
     <div>
       <Button
@@ -42,13 +65,14 @@ const TrailerPlayer = ({ movie }: { movie: Movie }) => {
           </button>
           <div className="relative pt-[56.25%]">
             <ReactPlayer
-              url={`https://www.youtube.com/watch?v=ZjrZWIISlY8&list=RDZjrZWIISlY8&start_radio=1`}
+              url={`https://www.youtube.com/watch?v=${trailer.key}`}
               width="100%"
               height="100%"
               style={{ position: "absolute", top: "0", left: "0" }}
               playing={playing}
               muted={muted}
             />
+
             <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
               <div className="flex space-x-2">
                 <button
