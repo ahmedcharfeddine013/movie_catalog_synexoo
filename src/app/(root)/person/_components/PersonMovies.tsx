@@ -4,6 +4,7 @@ import Loading from "@/components/Loading";
 import { fetchPersonMovies } from "@/lib/actions/movies/fetchMovies";
 import { PersonMovie } from "@/types";
 import React, { useEffect, useState } from "react";
+import MovieCardPerPerson from "./MovieCardPerPerson";
 
 const PersonMovies = ({ id }: { id: string }) => {
   const [movies, setMovies] = useState<PersonMovie[]>([]);
@@ -19,9 +20,9 @@ const PersonMovies = ({ id }: { id: string }) => {
       </div>
     );
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-3">
       {movies.map((movie) => (
-        <div key={movie.id}>{movie.title}</div>
+        <MovieCardPerPerson movie={movie} key={movie.id} />
       ))}
     </div>
   );
