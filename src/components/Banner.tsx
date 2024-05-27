@@ -75,7 +75,7 @@ export default function Banner() {
             className="text-4xl lg:text-[8rem] scale-50 opacity-0 "
             id="movie-title"
           >
-            {movie.name || movie.title}
+            {movie.title}
           </h1>
           <h3 className="text-xl lg:text-2xl opacity-0" id="movie-release-date">
             {movie.release_date}
@@ -85,7 +85,6 @@ export default function Banner() {
           </div>
         </div>
         <div>
-         
           <TrailerPlayer movie={movie} />
         </div>
       </div>

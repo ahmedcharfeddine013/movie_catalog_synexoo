@@ -11,7 +11,7 @@ const MoviePosterHeader = ({ movie }: { movie: Movie }) => {
           src={`https://image.tmdb.org/t/p/original/${
             movie.poster_path || movie.backdrop_path
           }`}
-          alt={movie.name || movie.title}
+          alt={movie.title}
           objectFit="cover"
           width={150}
           height={150}
@@ -21,7 +21,7 @@ const MoviePosterHeader = ({ movie }: { movie: Movie }) => {
         <p>
           Casting for{" "}
           <span className="text-lg font-bold text-primary">
-            {movie.title || movie.name}
+            {movie.title }
           </span>
         </p>
         <Link href={`/movie/${movie.id}`} className="hover:underline">

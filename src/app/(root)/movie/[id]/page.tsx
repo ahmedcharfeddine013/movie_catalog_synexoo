@@ -14,6 +14,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Casting from "@/components/Casting";
 import TrailerPlayer from "../_components/TrailerPlayer";
+import { formatDuration } from "@/lib/formatters";
 
 export default function MoviePage({
   params: { id },
@@ -81,11 +82,12 @@ export default function MoviePage({
               id="movie-title"
               className="text-xl md:text-2xl font-bold opacity-0"
             >
-              {movie.name || movie.title}
+              {movie.title}
             </h1>
             <p id="movie-overview" className="text-14px md:text-sm opacity-0">
               {movie.overview}
             </p>
+            <p>{formatDuration(movie.runtime)}</p>
             <p className="flex  gap-2">
               {" "}
               <Star className="text-yellow-500" />{" "}
