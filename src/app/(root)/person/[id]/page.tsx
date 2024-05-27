@@ -75,7 +75,7 @@ const PersonPage = ({ params: { id } }: { params: { id: string } }) => {
               <p className="text-sm font-semibold">{person.biography}</p>
             </div>
             <div>
-              <h3 className="text-primary text-lg">Known for: </h3>
+              <h3 className="text-primary text-lg">Movies: </h3>
               <PersonMovies id={person.id.toString()} />
             </div>
           </div>
