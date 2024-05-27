@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Casting from "@/components/Casting";
+import TrailerPlayer from "../_components/TrailerPlayer";
 
 export default function MoviePage({
   params: { id },
@@ -94,10 +95,7 @@ export default function MoviePage({
             <div className="w-full flex  justify-start">
               <MovieKeywords id={movie.id.toString()} />
             </div>
-            <Button className="rounded-none group bg-transparent border-primary border-2 w-fit text-xl p-6 flex gap-2">
-              <Play className="group-hover:text-white duration-100 ease-in transition-all text-primary" />{" "}
-              Watch Trailer
-            </Button>
+            <TrailerPlayer movie={movie} />
           </div>
         </div>
       </section>
