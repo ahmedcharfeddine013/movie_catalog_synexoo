@@ -2,7 +2,6 @@
 
 import React, { Suspense, useEffect, useState } from "react";
 import Logo from "./Logo";
-import { motion } from "framer-motion";
 import SearchMovie from "./SearchMovie";
 import Loading from "./Loading";
 import { useGSAP } from "@gsap/react";

@@ -6,21 +6,17 @@ import Loading from "./Loading";
 import { fetchMovie } from "@/lib/actions/movies/fetchMovies";
 import Image from "next/image";
 
-import { Outfit } from "next/font/google";
-import { Button } from "./ui/button";
 const outfit = Outfit({ weight: "400", subsets: ["latin"] });
-import { Play } from "lucide-react";
+
+import { Outfit } from "next/font/google";
+
 import MovieKeywords from "./MovieKeywords";
-import { useRecoilState } from "recoil";
-import { modalState, movieState } from "@/atoms/modalAtoms";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import TrailerPlayer from "@/app/(root)/movie/_components/TrailerPlayer";
 
 export default function Banner() {
   const [movie, setMovie] = useState<Movie>();
-  const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
   useEffect(() => {
     fetchMovie("693134").then((data) => setMovie(data));

@@ -14,12 +14,12 @@ const CastCard = ({ cast }: { cast: CastMember }) => {
       >
         <div className="w-48 h-48 overflow-hidden flex items-center justify-center">
           <Image
-            alt={cast.name}
-            // to do : add unkown profile picture
             src={
               `https://image.tmdb.org/t/p/original/${cast.profile_path}` ||
               unkown_picture
             }
+            alt={cast.name}
+            // to do : add unkown profile picture
             width={200}
             height={200}
             objectFit="cover"

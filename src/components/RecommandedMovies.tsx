@@ -5,9 +5,6 @@ import { Movie } from "@/types";
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Thumbnail from "./Thumbnail";
-import { Card } from "./ui/card";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function RecommandedMovies({ id }: { id: string }) {
   const [movies, setMovies] = useState<Movie[]>();

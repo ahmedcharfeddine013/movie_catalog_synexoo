@@ -24,7 +24,7 @@ export default function Thumbnail({ movie }: { movie: Movie }) {
         <CardContent className="absolute -bottom-20 transition-all duration-100 ease-in group-hover:bottom-0 bg-black/70 w-full h-[40%] ">
           <div>
             <h2 className="flex items-start font-bold mt-3">
-              {truncateString(movie.name) || truncateString(movie.title)}
+              {truncateString(movie.title)}
             </h2>
             <p className="text-sm text-gray-200">
               {movie.vote_average.toFixed()}/10 rating
