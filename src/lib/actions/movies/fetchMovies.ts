@@ -198,3 +198,16 @@ export async function fetchPerson(id: string) {
     console.log(`Error fetching this person id : ${id}`, error);
   }
 }
+
+export async function fetchPersonMovies(id: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/person/${id}/movie_credits`,
+      options
+    );
+    const data = await res.json();
+    return data.cast;
+  } catch (error) {
+    console.log(error);
+  }
+}

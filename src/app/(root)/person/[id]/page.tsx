@@ -5,6 +5,8 @@ import { fetchPerson } from "@/lib/actions/movies/fetchMovies";
 import { PersonDetails } from "@/types";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { PersonMovie } from "../../../../types/index";
+import PersonMovies from "../_components/PersonMovies";
 
 const PersonPage = ({ params: { id } }: { params: { id: string } }) => {
   const [person, setPerson] = useState<PersonDetails>();
@@ -74,7 +76,7 @@ const PersonPage = ({ params: { id } }: { params: { id: string } }) => {
             </div>
             <div>
               <h3 className="text-primary text-lg">Known for: </h3>
-              ...
+              <PersonMovies id={person.id.toString()} />
             </div>
           </div>
         </div>
