@@ -211,3 +211,16 @@ export async function fetchPersonMovies(id: string) {
     console.log(error);
   }
 }
+
+export async function fetchMovieTrailer(id: string) {
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos`,
+      options
+    );
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.log("Trailer fetching failed : ", error);
+  }
+}
