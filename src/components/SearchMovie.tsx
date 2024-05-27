@@ -11,7 +11,9 @@ export default function SearchMovie() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`/search?${searchInput}`);
+    if (searchInput.trim()) {
+      router.push(`/search?query=${searchInput}`);
+    }
   };
 
   return (

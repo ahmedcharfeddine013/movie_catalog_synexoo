@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "../providers/theme-provider";
 import Footer from "@/components/Footer";
 import { RecoilRoot } from "recoil";
+import { Suspense } from "react";
+import Loading from "@/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +26,11 @@ export default function RootLayout({
       <ThemeProvider attribute="class" defaultTheme="dark">
         <RecoilRoot>
           <body className={inter.className}>
-            <Navbar />
-            {children}
-            <Footer />
+            <Suspense fallback={<Loading />}>
+              <Navbar />
+              {children}
+              <Footer />
+            </Suspense>
           </body>
         </RecoilRoot>
       </ThemeProvider>
